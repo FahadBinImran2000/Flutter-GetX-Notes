@@ -96,7 +96,7 @@ GetX encourages:
 - Managing dependencies properly
 - Structured navigation
 
-> Simple idea: Logic in controllers, UI in widgets → Clean architecture.
+> Simple idea: Logic in controllers, UI in widgets → Better separation of concerns.
 
 ---
 

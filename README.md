@@ -159,3 +159,7 @@ Get.to(SecondScreen());
 With GetX you don't need `BuildContext` or complex navigation setup.
 
 > Simple idea: Go to the next screen with one simple line.
+
+---
+
+## State Management in GetX

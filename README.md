@@ -339,3 +339,38 @@ Use `GetBuilder` when:
 - Screen updates as one unit after an action → `GetBuilder`
 
 > Do not make everything `.obs`. Only make what truly needs reactivity.
+
+---
+
+## Deep Dive into Reactive State Manager
+
+### 1. Using Reactive Values in the Controller
+
+```dart
+final count1 = 0.obs;
+final count2 = 0.obs;
+int get sum => count1.value + count2.value;
+```
+
+What is happening here?
+- `count1` → reactive variable
+- `count2` → reactive variable
+- `sum` → normal Dart getter
+
+**Important:** `sum` is NOT `.obs`. It is just calculated from `count1` and `count2`.
+
+### 2. In the View
+
+```dart
+GetX<Controller>(
+  builder: (controller) {
+    return Text('${controller.count1.value}');
+  },
+),
+```
+
+Each `GetX<Controller>` widget:
+- Listens to reactive variables used inside its builder
+- Rebuilds only if those variables change
+
+> Think of it like: "I will only rebuild if the reactive variable I use changes."

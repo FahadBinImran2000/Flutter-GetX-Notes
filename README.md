@@ -374,3 +374,34 @@ Each `GetX<Controller>` widget:
 - Rebuilds only if those variables change
 
 > Think of it like: "I will only rebuild if the reactive variable I use changes."
+
+### 3. Why Do Only Some Widgets Rebuild?
+
+If you run:
+
+```dart
+count1.value++;
+```
+
+What changes?
+- `count1` changes
+- `sum` changes (because sum depends on count1)
+
+So:
+- ✔ count1 widget rebuilds
+- ✔ sum widget rebuilds
+- ❌ count2 widget does NOT rebuild
+
+Why? Because `count2` didn't change.
+
+If you run:
+
+```dart
+count2.value++;
+```
+
+- ✔ count2 widget rebuilds
+- ✔ sum widget rebuilds
+- ❌ count1 widget does NOT rebuild
+
+This is called **fine-grained dependency tracking**. GetX tracks which reactive variables are used inside each builder.

@@ -405,3 +405,15 @@ count2.value++;
 - ❌ count1 widget does NOT rebuild
 
 This is called **fine-grained dependency tracking**. GetX tracks which reactive variables are used inside each builder.
+
+### 4. Dependency Tracking: How Getters Work Reactively
+
+Even though `sum` is not `.obs`:
+
+```dart
+Text('${controller.sum}');
+```
+
+GetX sees that `sum` uses `count1.value` and `count2.value`, so it automatically listens to both.
+
+> This is smart tracking. You don't manually subscribe. GetX figures it out.

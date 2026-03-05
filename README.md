@@ -388,9 +388,9 @@ What changes?
 - `sum` changes (because sum depends on count1)
 
 So:
-- ✔ count1 widget rebuilds
-- ✔ sum widget rebuilds
-- ❌ count2 widget does NOT rebuild
+- count1 widget rebuilds
+- sum widget rebuilds
+- count2 widget does NOT rebuild
 
 Why? Because `count2` didn't change.
 
@@ -400,9 +400,9 @@ If you run:
 count2.value++;
 ```
 
-- ✔ count2 widget rebuilds
-- ✔ sum widget rebuilds
-- ❌ count1 widget does NOT rebuild
+- count2 widget rebuilds
+- sum widget rebuilds
+- count1 widget does NOT rebuild
 
 This is called **fine-grained dependency tracking**. GetX tracks which reactive variables are used inside each builder.
 
@@ -417,3 +417,81 @@ Text('${controller.sum}');
 GetX sees that `sum` uses `count1.value` and `count2.value`, so it automatically listens to both.
 
 > This is smart tracking. You don't manually subscribe. GetX figures it out.
+
+### 5. First Rebuild Behavior
+
+**1-Line Definition:** The first time you manually assign `.value` to an Rx variable, GetX triggers listeners once, even if the value didn't change.
+
+#### When It Occurs
+
+It occurs when ALL of these are true:
+1. The variable is reactive (`.obs`)
+2. You manually assign `.value = something`
+3. It is the FIRST assignment after creation
+
+**Example:**
+
+```dart
+var isLogged = false.obs;
+```
+
+Later:
+
+```dart
+isLogged.value = false;   // FIRST assignment
+```
+
+Even though: `false → false`
+
+GetX will:
+- Trigger `Obx`
+- Trigger `ever()`
+- Trigger `GetX<Controller>` rebuild
+
+#### When It Does NOT Occur
+
+**During declaration:**
+```dart
+var isLogged = false.obs;  // does NOT trigger anything
+```
+No listener is attached yet.
+
+**After the first assignment:**
+```dart
+isLogged.value = false;  // triggers (first time)
+isLogged.value = false;  // ignored (second time)
+```
+Only the first assignment forces a rebuild. After that, GetX behaves normally.
+
+**If value actually changes, these are normal rebuilds, not first rebuild behavior:**
+```dart
+isLogged.value = true;   // triggers (real change)
+isLogged.value = false;  // triggers (real change)
+```
+
+**If you disable it:**
+```dart
+isLogged.firstRebuild = false;
+```
+
+Now even the first assignment will NOT trigger if the value is the same.
+
+#### Where This Usually Happens
+
+**In `onInit()`:**
+```dart
+@override
+void onInit() {
+  isLogged.value = checkToken();
+}
+```
+
+Without first rebuild behavior, startup logic might never run if the value happens to be the same as the default.
+
+Also common in:
+- App startup logic
+- `ever()` listeners
+
+#### Where It Usually Does NOT Matter
+
+It rarely matters in counter apps, UI toggle buttons, form inputs, or small widgets because values actually change. It mostly matters in login, token checking, app initialization, and boolean flags.

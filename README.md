@@ -495,3 +495,18 @@ Also common in:
 #### Where It Usually Does NOT Matter
 
 It rarely matters in counter apps, UI toggle buttons, form inputs, or small widgets because values actually change. It mostly matters in login, token checking, app initialization, and boolean flags.
+
+### 6. `ever()`: Listening to Changes
+
+`ever()` is a listener. It means: "Whenever this reactive variable changes, run this function."
+
+```dart
+ever(isLogged, fireRoute);
+```
+
+Whenever `isLogged` changes, `fireRoute()` runs.
+
+Useful for:
+- Navigation
+- Showing dialogs
+- Triggering side effects

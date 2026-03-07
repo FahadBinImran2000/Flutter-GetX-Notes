@@ -510,3 +510,21 @@ Useful for:
 - Navigation
 - Showing dialogs
 - Triggering side effects
+
+### 7. Conditional Updates: `addIf()`
+
+```dart
+list.addIf(item < limit, item);
+```
+
+This means: only add the item if the condition is true.
+
+Instead of writing:
+
+```dart
+if (item < limit) {
+  list.add(item);
+}
+```
+
+GetX gives a shortcut.

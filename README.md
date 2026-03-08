@@ -420,7 +420,7 @@ GetX sees that `sum` uses `count1.value` and `count2.value`, so it automatically
 
 ### 5. First Rebuild Behavior
 
-**1-Line Definition:** The first time you manually assign `.value` to an Rx variable, GetX triggers listeners once, even if the value didn't change.
+**Line Definition:** The first time you manually assign `.value` to an Rx variable, GetX triggers listeners once, even if the value didn't change.
 
 #### When It Occurs
 

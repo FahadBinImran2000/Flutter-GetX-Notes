@@ -528,3 +528,22 @@ if (item < limit) {
 ```
 
 GetX gives a shortcut.
+
+### 8. Where `.obs` Can Be Used
+
+Earlier you learned basic `.obs` on simple variables. It can also be used in two more ways:
+
+#### Method 1 — Make Each Property Reactive
+
+```dart
+class RxUser {
+  final name = "Camila".obs;
+  final age = 18.obs;
+}
+```
+
+Here `name` and `age` are each reactive individually. If `name` changes, only widgets using `name` rebuild. If `age` changes, only widgets using `age` rebuild.
+
+```dart
+user.name.value = "John"; // only name widgets rebuild
+```

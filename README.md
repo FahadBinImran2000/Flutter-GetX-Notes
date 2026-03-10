@@ -547,3 +547,40 @@ Here `name` and `age` are each reactive individually. If `name` changes, only wi
 ```dart
 user.name.value = "John"; // only name widgets rebuild
 ```
+
+#### Method 2 — Make the Whole Object Reactive
+
+Instead of making each field reactive, you can make the entire object reactive.
+
+```dart
+class User {
+  User({this.name = '', this.age = 0});
+  String name;
+  int age;
+}
+```
+
+Controller:
+
+```dart
+final user = User(name: "Camila", age: 18).obs;
+```
+
+Now the whole `User` object is reactive.
+
+**Updating the object:**
+
+```dart
+user.update((user) {
+  user.name = "Jonny";
+  user.age = 18;
+});
+```
+
+**Replacing the entire object:**
+
+```dart
+user(User(name: "João", age: 35));
+```
+
+This replaces the old user object with a completely new one.

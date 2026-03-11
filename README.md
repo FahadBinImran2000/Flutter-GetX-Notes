@@ -537,7 +537,7 @@ Earlier you learned basic `.obs` on simple variables. It can also be used in two
 
 ```dart
 class RxUser {
-  final name = "Camila".obs;
+  final name = "Alex".obs;
   final age = 18.obs;
 }
 ```
@@ -563,7 +563,7 @@ class User {
 Controller:
 
 ```dart
-final user = User(name: "Camila", age: 18).obs;
+final user = User(name: "Alex", age: 18).obs;
 ```
 
 Now the whole `User` object is reactive.
@@ -572,7 +572,7 @@ Now the whole `User` object is reactive.
 
 ```dart
 user.update((user) {
-  user.name = "Jonny";
+  user.name = "John";
   user.age = 18;
 });
 ```
@@ -580,7 +580,7 @@ user.update((user) {
 **Replacing the entire object:**
 
 ```dart
-user(User(name: "João", age: 35));
+user(User(name: "Ali", age: 35));
 ```
 
 This replaces the old user object with a completely new one.

@@ -584,3 +584,21 @@ user(User(name: "Ali", age: 35));
 ```
 
 This replaces the old user object with a completely new one.
+
+### 9. Accessing Values from a Reactive Object
+
+In the UI:
+
+```dart
+Obx(() => Text("Name ${user.value.name}"))
+```
+
+**Why `.value`?** Because `user` is `Rx<User>`, not `User`. So `.value` gives you the real object inside.
+
+**Shortcut way:**
+
+```dart
+user().name
+```
+
+`user()` is just a shorthand for `user.value`. Both do the same thing.

@@ -602,3 +602,36 @@ user().name
 ```
 
 `user()` is just a shorthand for `user.value`. Both do the same thing.
+
+### 10. Reactive Lists
+
+Lists behave differently from primitive variables.
+
+```dart
+final list = <User>[].obs;
+```
+
+Now the entire list is reactive. When you add items:
+
+```dart
+list.add(User(name: "John"));
+```
+
+Widgets using the list rebuild automatically.
+
+**Lists do not need `.value`:**
+
+```dart
+controller.list.length   // correct
+controller.list.value.length  // not needed
+```
+
+**Why lists don't need `.value`:** Dart allows extending collection APIs directly, but primitive types cannot be extended. That is why:
+
+| Type | Needs `.value` |
+|------|---------------|
+| `int` | yes |
+| `String` | yes |
+| `bool` | yes |
+| `List` | no |
+| `Map` | no |

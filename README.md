@@ -635,3 +635,35 @@ controller.list.value.length  // not needed
 | `bool` | yes |
 | `List` | no |
 | `Map` | no |
+
+### 11. `assign()` and `assignAll()`
+
+These are special methods for reactive lists.
+
+**`assign()`** clears the list and adds one item:
+
+```dart
+list.assign(User(name: "John"));
+```
+
+Equivalent to:
+
+```dart
+list.clear();
+list.add(User(name: "John"));
+```
+
+**`assignAll()`** clears the list and adds multiple items:
+
+```dart
+list.assignAll(newUsers);
+```
+
+Equivalent to:
+
+```dart
+list.clear();
+list.addAll(newUsers);
+```
+
+Useful when loading fresh data from an API.

@@ -667,3 +667,25 @@ list.addAll(newUsers);
 ```
 
 Useful when loading fresh data from an API.
+
+### 12. Why `.value` Exists
+
+You might wonder why you write:
+
+```dart
+count.value++;
+```
+
+Instead of just:
+
+```dart
+count++;
+```
+
+The reason is that GetX avoids code generators. Libraries like MobX remove `.value` using code generation, but GetX philosophy is:
+
+- No code generation
+- No extra tools
+- Just add the package and start coding
+
+So `.value` is the trade-off for keeping things simple and generator-free.

@@ -689,3 +689,25 @@ The reason is that GetX avoids code generators. Libraries like MobX remove `.val
 - Just add the package and start coding
 
 So `.value` is the trade-off for keeping things simple and generator-free.
+
+### 13. `Obx()` vs `GetX()` Widget
+
+Both widgets listen to reactive variables and rebuild when they change. The difference is syntax.
+
+`GetX<Controller>` requires controller typing:
+
+```dart
+GetX<Controller>(
+  builder: (controller) {
+    return Text('${controller.count.value}');
+  },
+)
+```
+
+`Obx` is simpler and requires no typing:
+
+```dart
+Obx(() => Text('${controller.count.value}'))
+```
+
+Both do the same thing. Most developers prefer `Obx` because it is shorter and cleaner. `GetX<Controller>` is useful when you need explicit access to the controller inside the builder.

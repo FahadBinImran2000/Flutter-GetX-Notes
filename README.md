@@ -711,3 +711,19 @@ Obx(() => Text('${controller.count.value}'))
 ```
 
 Both do the same thing. Most developers prefer `Obx` because it is shorter and cleaner. `GetX<Controller>` is useful when you need explicit access to the controller inside the builder.
+
+### 14. Workers
+
+Workers are automatic listeners for reactive variables. They run a function when something changes.
+
+```dart
+ever(count1, (_) => print("count changed"));
+```
+
+```
+count1 changes
+↓
+function runs automatically
+```
+
+You already saw `ever()` in Section 6. Workers is the broader concept. `ever()` is one type of worker in GetX.

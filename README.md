@@ -727,3 +727,61 @@ function runs automatically
 ```
 
 You already saw `ever()` in Section 6. Workers is the broader concept. `ever()` is one type of worker in GetX.
+
+### 15. Types of Workers
+
+#### ever
+
+Runs every time the variable changes.
+
+```dart
+ever(count, (_) => print("count changed"));
+```
+
+```
+count changes → function runs
+count changes again → function runs again
+```
+
+#### once
+
+Runs only the first time the variable changes.
+
+```dart
+once(count, (_) => print("changed once"));
+```
+
+```
+first change → runs
+second change → ignored
+```
+
+#### debounce
+
+Waits until the user stops changing the value, then runs once.
+
+```dart
+debounce(searchText, (_) => fetchResults(), time: Duration(seconds: 1));
+```
+
+Example: search field. User types `J`, `Jo`, `Joh`, `John` quickly. Without debounce, 4 API calls are made. With debounce, GetX waits until the user stops typing and makes only one API call.
+
+```
+user stops typing
+↓
+only one API call
+```
+
+#### interval
+
+Limits how often a function runs regardless of how many times the variable changes.
+
+```dart
+interval(count, (_) => print("interval"), time: Duration(seconds: 1));
+```
+
+Example: user taps a button 100 times per second. Without interval, 100 actions fire. With interval set to 1 second, only one action fires per second.
+
+Useful for:
+- Coin reward systems
+- Spam protection

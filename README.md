@@ -6,6 +6,50 @@
 
 ---
 
+## Table of Contents
+
+### 📘 Beginner
+- [Overview](#overview)
+- [What is GetX?](#what-is-getx)
+- [What is Boilerplate Code?](#what-is-boilerplate-code)
+- [Core Principles of GetX](#core-principles-of-getx)
+- [Core Responsibilities of GetX](#core-responsibilities-of-getx)
+
+> **Checkpoint:** If you are new to GetX, stop here and practice the basics above before moving forward. The sections below go deeper into how GetX handles state internally.
+
+---
+
+### 📗 Intermediate
+- [State Management in GetX](#state-management-in-getx)
+    - [What is State?](#1-what-is-state)
+    - [Why Traditional State Managers Become Complex](#2-why-traditional-state-managers-become-complex)
+    - [How GetX Solves It](#3-how-getx-solves-it)
+    - [Reactive System Internals](#4-reactive-system-internals)
+    - [Full Reactive Flow](#5-full-reactive-flow)
+    - [Obx vs GetBuilder](#6-obx-vs-getbuilder)
+
+---
+
+### 📕 Advanced
+- [Deep Dive into Reactive State Manager](#deep-dive-into-reactive-state-manager)
+    - [Using Reactive Values in the Controller](#1-using-reactive-values-in-the-controller)
+    - [In the View](#2-in-the-view)
+    - [Why Do Only Some Widgets Rebuild?](#3-why-do-only-some-widgets-rebuild)
+    - [Dependency Tracking: How Getters Work Reactively](#4-dependency-tracking-how-getters-work-reactively)
+    - [First Rebuild Behavior](#5-first-rebuild-behavior)
+    - [ever(): Listening to Changes](#6-ever-listening-to-changes)
+    - [Conditional Updates: addIf()](#7-conditional-updates-addif)
+    - [Where .obs Can Be Used](#8-where-obs-can-be-used)
+    - [Accessing Values from a Reactive Object](#9-accessing-values-from-a-reactive-object)
+    - [Reactive Lists](#10-reactive-lists)
+    - [assign() and assignAll()](#11-assign-and-assignall)
+    - [Why .value Exists](#12-why-value-exists)
+    - [Obx() vs GetX() Widget](#13-obx-vs-getx-widget)
+    - [Workers](#14-workers)
+    - [Types of Workers](#15-types-of-workers)
+
+---
+
 ## Overview
 
 This repository contains conceptual notes about GetX.
@@ -157,6 +201,10 @@ Get.to(SecondScreen());
 With GetX you don't need `BuildContext` or complex navigation setup.
 
 > Go to the next screen with one simple line.
+
+---
+
+> **Checkpoint:** You have completed the foundational concepts. The sections below go deeper into how GetX handles state management internally. Come back when you are comfortable with the basics above.
 
 ---
 
@@ -343,6 +391,8 @@ Use `GetBuilder` when:
 ---
 
 ## Deep Dive into Reactive State Manager
+
+The sections below go into advanced reactive concepts. These build on everything covered above.
 
 ### 1. Using Reactive Values in the Controller
 
@@ -533,7 +583,7 @@ GetX gives a shortcut.
 
 Earlier you learned basic `.obs` on simple variables. It can also be used in two more ways:
 
-#### Method 1 — Make Each Property Reactive
+#### Method 1: Make Each Property Reactive
 
 ```dart
 class RxUser {
@@ -548,7 +598,7 @@ Here `name` and `age` are each reactive individually. If `name` changes, only wi
 user.name.value = "John"; // only name widgets rebuild
 ```
 
-#### Method 2 — Make the Whole Object Reactive
+#### Method 2: Make the Whole Object Reactive
 
 Instead of making each field reactive, you can make the entire object reactive.
 
@@ -573,14 +623,14 @@ Now the whole `User` object is reactive.
 ```dart
 user.update((user) {
   user.name = "John";
-  user.age = 18;
+  user.age = 20;
 });
 ```
 
 **Replacing the entire object:**
 
 ```dart
-user(User(name: "Ali", age: 35));
+user(User(name: "Ali", age: 25));
 ```
 
 This replaces the old user object with a completely new one.
@@ -622,7 +672,7 @@ Widgets using the list rebuild automatically.
 **Lists do not need `.value`:**
 
 ```dart
-controller.list.length   // correct
+controller.list.length        // correct
 controller.list.value.length  // not needed
 ```
 

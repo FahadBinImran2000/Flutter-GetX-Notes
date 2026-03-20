@@ -835,3 +835,16 @@ Example: user taps a button 100 times per second. Without interval, 100 actions 
 Useful for:
 - Coin reward systems
 - Spam protection
+
+### 16. Where Workers Should Be Used
+
+Workers should be created inside `onInit()`:
+
+```dart
+@override
+void onInit() {
+  ever(count, (_) => print("changed"));
+}
+```
+
+This is the recommended place because `onInit()` runs when the controller is first created, ensuring the worker is registered before any changes happen.

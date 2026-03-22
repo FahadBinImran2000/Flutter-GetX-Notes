@@ -15,7 +15,7 @@
 - [Core Principles of GetX](#core-principles-of-getx)
 - [Core Responsibilities of GetX](#core-responsibilities-of-getx)
 
-> **Checkpoint:** If you are new to GetX, stop here and practice the basics above before moving forward. The sections below go deeper into how GetX handles state internally.
+> **Checkpoint:** If you are new to GetX, stop here and understand the basics above before moving forward. The sections below go deeper into how GetX handles state internally.
 
 ---
 

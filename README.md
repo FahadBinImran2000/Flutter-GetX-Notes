@@ -47,6 +47,7 @@
     - [Obx() vs GetX() Widget](#13-obx-vs-getx-widget)
     - [Workers](#14-workers)
     - [Types of Workers](#15-types-of-workers)
+    - [Where Workers Should Be Used](#16-where-workers-should-be-used)
 
 ---
 

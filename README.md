@@ -849,3 +849,7 @@ void onInit() {
 ```
 
 This is the recommended place because `onInit()` runs when the controller is first created, ensuring the worker is registered before any changes happen.
+
+---
+
+## Simple State Manager

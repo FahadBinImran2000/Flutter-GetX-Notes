@@ -853,3 +853,55 @@ This is the recommended place because `onInit()` runs when the controller is fir
 ---
 
 ## Simple State Manager
+
+GetX provides a second approach to state management that gives you full manual control over when the UI rebuilds.
+
+GetX has two ways to manage state:
+1. Reactive → `Obx` (covered in previous sections)
+2. Simple → `GetBuilder` (this section)
+
+Simple State Manager means `GetBuilder`. It is a manual update system, similar to `setState()`. Instead of automatic updates like `.obs`, you control when the UI rebuilds.
+
+### 1. How It Works
+
+**Controller:**
+
+```dart
+class CartController extends GetxController {
+  int totalPrice = 0;
+  int itemCount = 0;
+ 
+  void removeItem() {
+    itemCount--;
+    totalPrice -= 100;
+    update(); // manually trigger UI rebuild
+  }
+}
+```
+
+**UI:**
+
+```dart
+GetBuilder<CartController>(
+  builder: (controller) {
+    return Column(
+      children: [
+        Text("Items: ${controller.itemCount}"),
+        Text("Price: ${controller.totalPrice}"),
+      ],
+    );
+  },
+)
+```
+
+**What happens:**
+
+```
+removeItem() called
+↓
+values change
+↓
+update() called
+↓
+whole GetBuilder rebuilds
+```

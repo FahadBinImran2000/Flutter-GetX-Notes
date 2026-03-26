@@ -905,3 +905,12 @@ update() called
 ↓
 whole GetBuilder rebuilds
 ```
+
+### 2. Key Difference
+
+| Approach | Update Type |
+|----------|------------|
+| Reactive (`Obx`) | Automatic |
+| Simple (`GetBuilder`) | Manual |
+
+That is the core difference.

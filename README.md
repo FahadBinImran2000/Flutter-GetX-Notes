@@ -27,6 +27,9 @@
     - [Reactive System Internals](#4-reactive-system-internals)
     - [Full Reactive Flow](#5-full-reactive-flow)
     - [Obx vs GetBuilder](#6-obx-vs-getbuilder)
+- [Simple State Manager](#simple-state-manager)
+    - [How It Works](#1-how-it-works)
+    - [Key Difference](#2-key-difference)
 
 ---
 

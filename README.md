@@ -917,3 +917,12 @@ whole GetBuilder rebuilds
 | Simple (`GetBuilder`) | Manual |
 
 That is the core difference.
+
+### 3. Why GetBuilder Exists
+
+Sometimes you don't need reactive variables, automatic tracking, or fine-grained updates. Sometimes you just want:
+
+> "Update everything together when I say so."
+
+`GetBuilder` is the right tool for those cases.
+ 

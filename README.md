@@ -30,6 +30,7 @@
 - [Simple State Manager](#simple-state-manager)
     - [How It Works](#1-how-it-works)
     - [Key Difference](#2-key-difference)
+    - [Why GetBuilder Exists](#3-why-getbuilder-exists)
 
 ---
 

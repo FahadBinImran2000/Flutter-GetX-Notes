@@ -953,4 +953,36 @@ Entire UI block rebuilds
 ```
 
 No need to manage each variable separately.
+
+### 5. Why It Is Called Simple
+
+Because there is no `.obs`, no `.value`, no `Obx`, and no reactive thinking involved. Just:
+
+```
+Change data → call update()
+```
+
+### 6. Performance Advantage
+
+`GetBuilder` rebuilds once for multiple changes instead of triggering many small rebuilds.
+
+With `Obx`, each reactive variable triggers its own rebuild:
+
+```
+count changes → rebuild
+price changes → rebuild
+badge changes → rebuild
+```
+
+With `GetBuilder`, all changes trigger a single rebuild:
+
+```
+all changes
+↓
+one update()
+↓
+one rebuild
+```
+
+This makes `GetBuilder` more efficient when multiple values change together as one unit.
  

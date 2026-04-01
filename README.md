@@ -985,4 +985,27 @@ one rebuild
 ```
 
 This makes `GetBuilder` more efficient when multiple values change together as one unit.
+
+### 7. When to Use GetBuilder
+
+- Many values change together (API response, cart update)
+- You want simple logic without reactive complexity
+- State changes rarely
+
+### 8. Rebuilding Specific Parts with IDs
+
+You can target specific parts of the UI to rebuild instead of the entire `GetBuilder` block:
+
+```dart
+update(['price']);
+```
+
+```dart
+GetBuilder<MyController>(
+  id: 'price',
+  builder: (_) => Text("Price"),
+)
+```
+
+Only the widget with that matching `id` rebuilds.
  

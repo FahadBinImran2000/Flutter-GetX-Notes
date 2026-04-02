@@ -31,6 +31,11 @@
     - [How It Works](#1-how-it-works)
     - [Key Difference](#2-key-difference)
     - [Why GetBuilder Exists](#3-why-getbuilder-exists)
+    - [Real Example: Cart Scenario](#4-real-example-cart-scenario)
+    - [Why It Is Called Simple](#5-why-it-is-called-simple)
+    - [Performance Advantage](#6-performance-advantage)
+    - [When to Use GetBuilder](#7-when-to-use-getbuilder)
+    - [Rebuilding Specific Parts with IDs](#8-rebuilding-specific-parts-with-ids)
 
 ---
 

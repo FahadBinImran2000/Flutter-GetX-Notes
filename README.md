@@ -36,6 +36,7 @@
     - [Performance Advantage](#6-performance-advantage)
     - [When to Use GetBuilder](#7-when-to-use-getbuilder)
     - [Rebuilding Specific Parts with IDs](#8-rebuilding-specific-parts-with-ids)
+    - [GetBuilder Does Not Use ChangeNotifier](#9-getbuilder-does-not-use-changenotifier)
 
 ---
 
@@ -1013,4 +1014,15 @@ GetBuilder<MyController>(
 ```
 
 Only the widget with that matching `id` rebuilds.
+
+### 9. GetBuilder Does Not Use ChangeNotifier
+
+Most Flutter state managers like Provider use `ChangeNotifier` internally. That means they store listeners, notify all of them on any change, and can become heavy in large apps.
+
+`GetBuilder` does not use `ChangeNotifier`. Instead it uses its own ID-based system and only updates widgets linked to a specific ID.
+
+Result:
+- Less memory usage
+- Faster updates
+- More control over what rebuilds
  

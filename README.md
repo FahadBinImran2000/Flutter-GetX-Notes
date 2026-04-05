@@ -1040,3 +1040,19 @@ void removeItem() {
 ```
 
 You just change everything and call `update()`. This is what GetX means by updating state "without computational logic" — no extra tracking system is running behind the scenes.
+
+### 11. Ephemeral State
+
+Ephemeral state means temporary UI state that doesn't need a full state manager.
+
+Examples:
+- Button color change
+- Toggle switch
+- Animation state
+
+For these, `setState()` is enough. You don't need GetBuilder or Obx.
+
+```
+Small temporary change → use setState
+Bigger shared change → use GetBuilder
+```

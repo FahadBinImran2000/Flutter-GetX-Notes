@@ -1056,3 +1056,20 @@ For these, `setState()` is enough. You don't need GetBuilder or Obx.
 Small temporary change → use setState
 Bigger shared change → use GetBuilder
 ```
+
+### 12. Forget StatefulWidget
+
+Normally in Flutter, a `StatefulWidget` stores the entire screen state. Even if only one small widget changes, the whole widget tree is stateful.
+
+GetX suggests a different approach:
+
+- Make everything `StatelessWidget`
+- Only wrap the parts that change with `GetBuilder`
+
+```
+StatelessWidget
+↓
+GetBuilder → only this part updates
+```
+
+Result: less memory usage and a cleaner widget structure.

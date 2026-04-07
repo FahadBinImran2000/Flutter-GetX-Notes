@@ -1073,3 +1073,30 @@ GetBuilder → only this part updates
 ```
 
 Result: less memory usage and a cleaner widget structure.
+
+### 13. initState and dispose Inside GetBuilder
+
+Normally `initState()` and `dispose()` belong to `StatefulWidget`. With `GetBuilder` you can run lifecycle code directly inside it:
+
+```dart
+GetBuilder(
+  initState: (_) => controller.fetchData(),
+  dispose: (_) => controller.cleanUp(),
+)
+```
+
+However the better and more professional approach is to use the controller lifecycle instead:
+
+```dart
+@override
+void onInit() {
+  fetchData();
+}
+ 
+@override
+void onClose() {
+  cleanUp();
+}
+```
+
+This keeps lifecycle logic inside the controller where it belongs, not scattered in the UI.

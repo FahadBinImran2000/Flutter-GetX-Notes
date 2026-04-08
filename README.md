@@ -1100,3 +1100,27 @@ void onClose() {
 ```
 
 This keeps lifecycle logic inside the controller where it belongs, not scattered in the UI.
+
+### 14. Controller Lifecycle
+
+Every GetX controller goes through three lifecycle stages:
+
+**`onInit()`** runs when the controller is first created. Use it for setup logic like API calls or initializing data.
+
+```dart
+@override
+void onInit() {
+  fetchData();
+}
+```
+
+**`onClose()`** runs when the controller is removed. Use it for cleanup like closing streams or cancelling timers.
+
+```dart
+@override
+void onClose() {
+  cleanUp();
+}
+```
+
+**Deleted** — after `onClose()` the controller is removed from memory automatically. You don't control this manually.

@@ -1124,3 +1124,19 @@ void onClose() {
 ```
 
 **Deleted** — after `onClose()` the controller is removed from memory automatically. You don't control this manually.
+
+### 15. Automatic Memory Management
+
+GetX automatically creates a controller when it is needed and removes it when it is no longer needed. You do not manually dispose or remove controllers.
+
+```
+Screen A → no controller
+↓
+Screen B → controller created
+↓
+Screen C → same controller reused
+↓
+Back to A → controller removed
+```
+
+Memory is optimized automatically without any extra code from you.

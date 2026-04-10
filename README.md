@@ -1140,3 +1140,24 @@ Back to A → controller removed
 ```
 
 Memory is optimized automatically without any extra code from you.
+
+### 16. Initialize Controller Only Once
+
+When using `GetBuilder`, only pass `init` the first time:
+
+```dart
+GetBuilder(
+  init: MyController(), // only on first use
+  builder: (_) => Text(...),
+)
+```
+
+If you use `GetBuilder` again elsewhere, do not pass `init` again:
+
+```dart
+GetBuilder<MyController>(
+  builder: (_) => Text(...), // no init here
+)
+```
+
+If you reinitialize on every use, you will create multiple controller instances which causes unexpected behavior and memory issues.

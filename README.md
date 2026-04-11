@@ -1161,3 +1161,25 @@ GetBuilder<MyController>(
 ```
 
 If you reinitialize on every use, you will create multiple controller instances which causes unexpected behavior and memory issues.
+
+### 17. Access Controller Globally
+
+You can create a shortcut inside the controller to access it from anywhere:
+
+```dart
+static Controller get to => Get.find();
+```
+
+Then use it like this:
+
+```dart
+Controller.to.increment();
+```
+
+This is just a shortcut for:
+
+```dart
+Get.find<Controller>().increment();
+```
+
+Both do the same thing. The `to` getter just makes it cleaner to read.

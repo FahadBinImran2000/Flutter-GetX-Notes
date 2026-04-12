@@ -1183,3 +1183,34 @@ Get.find<Controller>().increment();
 ```
 
 Both do the same thing. The `to` getter just makes it cleaner to read.
+
+### 18. Unique IDs with Conditional Update
+
+You already saw basic ID usage in Section 8. Here is the deeper feature — conditional updates:
+
+```dart
+update(['price'], counter < 10);
+```
+
+This means: only update the `price` widget if the condition is true. Regular `update(['price'])` always rebuilds. The condition gives you extra control.
+
+### 19. Single State Shared Across Widgets
+
+`GetBuilder` does not create separate state for each widget. One controller is shared across all `GetBuilder` widgets that use it.
+
+```
+Multiple widgets → same controller → one update() updates all
+```
+
+This saves RAM and is better for large apps compared to creating separate state instances per widget.
+
+### 20. Streams Warning
+
+Do not overuse reactive streams. Too many `.obs` variables and streams running simultaneously increases memory usage significantly.
+
+```
+30 streams → heavy memory
+GetBuilder → lightweight
+```
+
+Use `GetBuilder` for state that does not need to be reactive. Reserve `.obs` and `Obx` for values that genuinely need automatic tracking.

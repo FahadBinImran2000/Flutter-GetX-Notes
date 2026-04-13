@@ -37,6 +37,17 @@
     - [When to Use GetBuilder](#7-when-to-use-getbuilder)
     - [Rebuilding Specific Parts with IDs](#8-rebuilding-specific-parts-with-ids)
     - [GetBuilder Does Not Use ChangeNotifier](#9-getbuilder-does-not-use-changenotifier)
+    - [Multiple State Control](#10-multiple-state-control)
+    - [Ephemeral State](#11-ephemeral-state)
+    - [Forget StatefulWidget](#12-forget-statefulwidget)
+    - [initState and dispose Inside GetBuilder](#13-initstate-and-dispose-inside-getbuilder)
+    - [Controller Lifecycle](#14-controller-lifecycle)
+    - [Automatic Memory Management](#15-automatic-memory-management)
+    - [Initialize Controller Only Once](#16-initialize-controller-only-once)
+    - [Access Controller Globally](#17-access-controller-globally)
+    - [Unique IDs with Conditional Update](#18-unique-ids-with-conditional-update)
+    - [Single State Shared Across Widgets](#19-single-state-shared-across-widgets)
+    - [Streams Warning](#20-streams-warning)
 
 ---
 

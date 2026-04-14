@@ -1225,3 +1225,7 @@ GetBuilder → lightweight
 ```
 
 Use `GetBuilder` for state that does not need to be reactive. Reserve `.obs` and `Obx` for values that genuinely need automatic tracking.
+
+---
+
+## Mixing State Managers

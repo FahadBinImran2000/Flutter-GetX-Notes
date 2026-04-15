@@ -1229,3 +1229,23 @@ Use `GetBuilder` for state that does not need to be reactive. Reserve `.obs` and
 ---
 
 ## Mixing State Managers
+
+In real apps a single screen can have both types of state. GetX allows mixing `Obx` and `GetBuilder` in the same widget:
+
+```dart
+GetBuilder<Controller>(
+  builder: (_) {
+    return Column(
+      children: [
+        Obx(() => Text("${_.count.value}")), // reactive part
+        TextButton(
+          onPressed: _.increment,
+          child: Text("Add"),
+        ),
+      ],
+    );
+  },
+);
+```
+
+`GetBuilder` handles the main UI structure and manual updates. `Obx` handles small live reactive parts inside it.

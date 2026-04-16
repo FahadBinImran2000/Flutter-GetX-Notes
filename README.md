@@ -1249,3 +1249,13 @@ GetBuilder<Controller>(
 ```
 
 `GetBuilder` handles the main UI structure and manual updates. `Obx` handles small live reactive parts inside it.
+
+### 1. MixinBuilder
+
+`MixinBuilder` is a hybrid widget that supports both `.obs` reactive updates and manual `update()` calls in a single widget.
+
+It exists because mixing `Obx` and `GetBuilder` manually can sometimes become messy. `MixinBuilder` handles both systems internally.
+
+However it is heavier than using either alone because it subscribes to reactive streams and also listens to manual updates simultaneously.
+
+Use `MixinBuilder` only when you must combine both systems heavily in one widget. Otherwise, manually combining `Obx` and `GetBuilder` is the better approach.

@@ -1230,7 +1230,16 @@ Use `GetBuilder` for state that does not need to be reactive. Reserve `.obs` and
 
 ## Mixing State Managers
 
-In real apps a single screen can have both types of state. GetX allows mixing `Obx` and `GetBuilder` in the same widget:
+GetX provides a third approach by combining both reactive and simple state management in the same widget tree.
+
+### 1. Mixing Obx and GetBuilder
+
+In real apps a single screen can have both types of state. GetX allows mixing `Obx` and `GetBuilder` together:
+
+| Type of data | Best tool |
+|---|---|
+| Counter, live values | `Obx` |
+| API response, screen refresh | `GetBuilder` |
 
 ```dart
 GetBuilder<Controller>(
@@ -1250,7 +1259,7 @@ GetBuilder<Controller>(
 
 `GetBuilder` handles the main UI structure and manual updates. `Obx` handles small live reactive parts inside it.
 
-### 1. MixinBuilder
+### 2. MixinBuilder
 
 `MixinBuilder` is a hybrid widget that supports both `.obs` reactive updates and manual `update()` calls in a single widget.
 

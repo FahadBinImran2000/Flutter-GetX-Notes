@@ -1489,3 +1489,81 @@ MixinBuilder (heaviest)
 | Rare mixed behavior | `MixinBuilder` |
 
 > Reactive programming is not suitable for all situations. Use the right tool for the right job.
+
+---
+
+## Route Management in GetX
+
+Route management is the second core pillar of GetX. It handles navigation between screens without needing `BuildContext`.
+
+### 1. What is Route Management?
+
+Route = screen. Route management means:
+
+```
+Go to next screen
+Go back
+Replace screen
+Pass data between screens
+```
+
+In normal Flutter navigation requires `context`, produces long code, and is hard to call from a controller:
+
+```dart
+Navigator.of(context).push(...)
+```
+
+GetX removes all of that.
+
+### 2. Setup
+
+Replace `MaterialApp` with `GetMaterialApp`:
+
+```dart
+GetMaterialApp(
+  home: MyHome(),
+)
+```
+
+That is all the setup needed.
+
+### 3. Basic Navigation
+
+**Go to next screen:**
+
+```dart
+Get.to(NextScreen());
+```
+
+**Go back:**
+
+```dart
+Get.back();
+```
+
+```
+Screen A → Get.to → Screen B
+Screen B → Get.back → Screen A
+```
+
+### 4. Replace Screens
+
+**Go to next screen and remove previous (user cannot go back):**
+
+```dart
+Get.off(NextScreen());
+```
+
+**Remove all previous screens and go to new one:**
+
+```dart
+Get.offAll(NextScreen());
+```
+
+Used in: login to home, splash to app.
+
+| Method | Meaning |
+|--------|---------|
+| `Get.to` | push |
+| `Get.off` | replace |
+| `Get.offAll` | clear all |

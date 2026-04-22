@@ -1567,3 +1567,45 @@ Used in: login to home, splash to app.
 | `Get.to` | push |
 | `Get.off` | replace |
 | `Get.offAll` | clear all |
+
+### 5. Named Routes
+
+Instead of passing a widget directly, you can navigate using a name:
+
+```dart
+Get.toNamed("/details");
+```
+
+Setup in `GetMaterialApp`:
+
+```dart
+GetMaterialApp(
+  initialRoute: '/',
+  getPages: [
+    GetPage(name: '/', page: () => Home()),
+    GetPage(name: '/details', page: () => Details()),
+  ],
+)
+```
+
+Named routes are cleaner for large apps and make navigation management easier.
+
+### 6. Passing Data Between Screens
+
+**Send data and receive result:**
+
+```dart
+var data = await Get.to(Payment());
+```
+
+**Return data from the second screen:**
+
+```dart
+Get.back(result: "success");
+```
+
+```
+Screen A → opens Screen B
+Screen B → sends result via Get.back
+Screen A → receives result
+```

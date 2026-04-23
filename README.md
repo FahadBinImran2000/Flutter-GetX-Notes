@@ -1609,3 +1609,36 @@ Screen A → opens Screen B
 Screen B → sends result via Get.back
 Screen A → receives result
 ```
+
+### 7. Arguments
+
+Another way to pass data between screens using `arguments`:
+
+**Send:**
+
+```dart
+Get.toNamed("/next", arguments: "Hello");
+```
+
+**Receive:**
+
+```dart
+print(Get.arguments);
+```
+
+### 8. URL-Style Parameters
+
+You can pass data like web URLs:
+
+```dart
+Get.toNamed("/profile/123?name=Ali");
+```
+
+**Receive:**
+
+```dart
+Get.parameters['user']
+Get.parameters['name']
+```
+
+Works like a web URL: `/profile/123?name=Ali`

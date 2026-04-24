@@ -1642,3 +1642,62 @@ Get.parameters['name']
 ```
 
 Works like a web URL: `/profile/123?name=Ali`
+
+### 9. No Context Needed (Big Advantage)
+
+You can navigate from inside a controller without passing context:
+
+```dart
+Get.to(Home());
+```
+
+This is normally impossible in Flutter without passing `BuildContext` through multiple layers. GetX makes it possible from anywhere in your app.
+
+### 10. Snackbar
+
+Normal Flutter requires context and boilerplate:
+
+```dart
+Scaffold.of(context).showSnackBar(...)
+```
+
+With GetX:
+
+```dart
+Get.snackbar("Hi", "Hello");
+```
+
+Call a snackbar from anywhere with no context and no boilerplate.
+
+### 11. Dialogs
+
+**Show a custom dialog:**
+
+```dart
+Get.dialog(MyDialog());
+```
+
+**Show a default dialog:**
+
+```dart
+Get.defaultDialog(
+  title: "Hello",
+  middleText: "This is dialog",
+);
+```
+
+**Close dialog:**
+
+```dart
+Get.back();
+```
+
+### 12. Bottom Sheet
+
+```dart
+Get.bottomSheet(
+  Container(child: Text("Hello")),
+);
+```
+
+No context needed. Same pattern as everything else in GetX.

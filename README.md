@@ -1701,3 +1701,24 @@ Get.bottomSheet(
 ```
 
 No context needed. Same pattern as everything else in GetX.
+
+### 13. Middleware
+
+Middleware lets you run code when a route changes.
+
+```dart
+if (route == "/second") {
+  showAd();
+}
+```
+
+Use cases:
+- Show ads on specific routes
+- Check if user is logged in before allowing access
+- Analytics tracking
+
+### 14. Nested Navigation
+
+Multiple navigation stacks running at the same time. For example, bottom navigation tabs where each tab has its own navigation history.
+
+Use only when needed. More navigation stacks means more memory usage.

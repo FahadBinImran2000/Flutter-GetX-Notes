@@ -87,6 +87,21 @@
     - [Performance Ranking](#6-performance-ranking)
     - [Decision Rule](#7-decision-rule)
     - [Practical Examples](#8-practical-examples)
+- [Route Management in GetX](#route-management-in-getx)
+    - [What is Route Management?](#1-what-is-route-management)
+    - [Setup](#2-setup)
+    - [Basic Navigation](#3-basic-navigation)
+    - [Replace Screens](#4-replace-screens)
+    - [Named Routes](#5-named-routes)
+    - [Passing Data Between Screens](#6-passing-data-between-screens)
+    - [Arguments](#7-arguments)
+    - [URL-Style Parameters](#8-url-style-parameters)
+    - [No Context Needed (Big Advantage)](#9-no-context-needed-big-advantage)
+    - [Snackbar](#10-snackbar)
+    - [Dialogs](#11-dialogs)
+    - [Bottom Sheet](#12-bottom-sheet)
+    - [Middleware](#13-middleware)
+    - [Nested Navigation](#14-nested-navigation)
 
 ---
 

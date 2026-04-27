@@ -1737,3 +1737,7 @@ Use cases:
 Multiple navigation stacks running at the same time. For example, bottom navigation tabs where each tab has its own navigation history.
 
 Use only when needed. More navigation stacks means more memory usage.
+
+---
+
+## Dependency Injection in GetX

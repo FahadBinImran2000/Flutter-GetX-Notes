@@ -1741,3 +1741,23 @@ Use only when needed. More navigation stacks means more memory usage.
 ---
 
 ## Dependency Injection in GetX
+
+Dependency Injection is the third core pillar of GetX. It handles how you create and access controllers or services from anywhere in your app.
+
+### 1. What is Dependency Management?
+
+Dependency = any class you need (controller, service, API class, etc.)
+
+Without GetX, you create a new instance every time which makes it hard to share data across screens:
+
+```dart
+final controller = Controller(); // new instance every time
+```
+
+With GetX, you create the controller once and store it globally:
+
+```dart
+Controller controller = Get.put(Controller());
+```
+
+Now the same instance is accessible from anywhere in your app.

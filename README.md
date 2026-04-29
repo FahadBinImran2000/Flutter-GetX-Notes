@@ -102,6 +102,8 @@
     - [Bottom Sheet](#12-bottom-sheet)
     - [Middleware](#13-middleware)
     - [Nested Navigation](#14-nested-navigation)
+- [Dependency Injection in GetX](#dependency-injection-in-getx)
+    - [What is Dependency Management?](#1-what-is-dependency-management)
 
 ---
 

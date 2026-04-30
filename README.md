@@ -1763,3 +1763,32 @@ Controller controller = Get.put(Controller());
 ```
 
 Now the same instance is accessible from anywhere in your app.
+
+### 2. Get.put()
+
+The main method for creating and storing a controller:
+
+```dart
+Get.put(Controller());
+```
+
+```
+Create controller
+↓
+Store it in memory
+↓
+Make it accessible everywhere
+```
+
+Access it later from anywhere:
+
+```dart
+Controller controller = Get.find();
+```
+
+`Get.find()` returns the same instance that was created with `Get.put()`.
+
+```
+Get.put()  → create and store
+Get.find() → get existing instance
+```

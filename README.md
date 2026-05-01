@@ -1792,3 +1792,18 @@ Controller controller = Get.find();
 Get.put()  → create and store
 Get.find() → get existing instance
 ```
+
+### 3. Why This Is Powerful
+
+Without GetX, sharing data between screens is complicated. With GetX:
+
+```
+Screen A → fetches API → saves data in controller
+Screen B → needs same data → Get.find()
+```
+
+```dart
+final controller = Get.find();
+```
+
+Same data, same instance, no extra setup.

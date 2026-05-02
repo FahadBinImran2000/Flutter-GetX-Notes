@@ -1807,3 +1807,22 @@ final controller = Get.find();
 ```
 
 Same data, same instance, no extra setup.
+
+### 4. Get.lazyPut()
+
+```dart
+Get.lazyPut(() => Controller());
+```
+
+Unlike `Get.put()`, this does NOT create the controller immediately:
+
+```
+App start → no controller created
+↓
+First Get.find() call → controller created then
+```
+
+Use when:
+- The object is heavy (API client, database)
+- You don't need it at app startup
+  For now, use `Get.put()` for most cases. Come back to `lazyPut` when you need to optimize startup performance.

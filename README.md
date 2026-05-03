@@ -1826,3 +1826,26 @@ Use when:
 - The object is heavy (API client, database)
 - You don't need it at app startup
   For now, use `Get.put()` for most cases. Come back to `lazyPut` when you need to optimize startup performance.
+
+### 5. permanent vs fenix
+
+**`permanent: true`**
+
+```dart
+Get.put(Controller(), permanent: true);
+```
+
+Controller is never deleted from memory. Use for auth controllers and app-wide services.
+
+**`fenix: true`** (lazyPut only)
+
+```dart
+Get.lazyPut(() => Controller(), fenix: true);
+```
+
+Controller is deleted when not in use but recreated automatically when needed again.
+
+| Feature | Behavior |
+|---------|---------|
+| `permanent` | Never deleted |
+| `fenix` | Deleted then recreated when needed |

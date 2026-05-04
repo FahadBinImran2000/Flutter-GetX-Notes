@@ -1849,3 +1849,15 @@ Controller is deleted when not in use but recreated automatically when needed ag
 |---------|---------|
 | `permanent` | Never deleted |
 | `fenix` | Deleted then recreated when needed |
+
+### 6. Get.create()
+
+```dart
+Get.create(() => Controller());
+```
+
+Unlike `Get.put()`, this creates a new instance every time `Get.find()` is called.
+
+Use case: list items where each item needs its own separate controller instance.
+
+This is a rare case. For most apps, stick with `Get.put()`.

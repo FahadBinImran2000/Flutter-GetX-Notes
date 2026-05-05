@@ -1861,3 +1861,38 @@ Unlike `Get.put()`, this creates a new instance every time `Get.find()` is calle
 Use case: list items where each item needs its own separate controller instance.
 
 This is a rare case. For most apps, stick with `Get.put()`.
+
+### 7. Bindings
+
+Bindings make dependency injection professional and clean. Instead of calling `Get.put()` inside the UI, you create a dedicated binding class:
+
+```dart
+class HomeBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => HomeController());
+  }
+}
+```
+
+Attach it to a route:
+
+```dart
+GetPage(
+  name: '/home',
+  page: () => HomeView(),
+  binding: HomeBinding(),
+)
+```
+
+```
+Open screen
+↓
+Controller automatically created
+↓
+Close screen
+↓
+Controller automatically deleted
+```
+
+Benefits: clean architecture, no manual initialization, automatic memory management.

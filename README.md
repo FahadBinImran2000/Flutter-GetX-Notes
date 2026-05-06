@@ -1896,3 +1896,13 @@ Controller automatically deleted
 ```
 
 Benefits: clean architecture, no manual initialization, automatic memory management.
+
+### 8. Why Bindings Are Powerful
+
+Bindings connect three things together:
+
+```
+Route ↔ Controller ↔ Dependency
+```
+
+Each screen gets its own controller automatically. You don't think about when to create or destroy it. GetX handles the entire lifecycle tied to the route.

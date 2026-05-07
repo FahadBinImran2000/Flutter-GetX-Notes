@@ -1906,3 +1906,13 @@ Route ↔ Controller ↔ Dependency
 ```
 
 Each screen gets its own controller automatically. You don't think about when to create or destroy it. GetX handles the entire lifecycle tied to the route.
+
+### 9. SmartManagement
+
+By default GetX automatically deletes unused controllers. This is `SmartManagement.full`.
+
+Other options:
+
+- **`onlyBuilder`** — only delete controllers created via `GetBuilder init` or `Bindings`
+- **`keepFactory`** — delete the instance but keep the ability to recreate it
+Do not change this setting until you have a strong reason to. The default works well for most apps.

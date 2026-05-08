@@ -1915,4 +1915,15 @@ Other options:
 
 - **`onlyBuilder`** — only delete controllers created via `GetBuilder init` or `Bindings`
 - **`keepFactory`** — delete the instance but keep the ability to recreate it
-Do not change this setting until you have a strong reason to. The default works well for most apps.
+  Do not change this setting until you have a strong reason to. The default works well for most apps.
+
+### 10. Auto Memory Management
+
+GetX handles controller lifecycle automatically:
+
+```
+Create controller → when needed
+Delete controller → when not used
+```
+
+You never need to call `dispose()` or manage the lifecycle manually.

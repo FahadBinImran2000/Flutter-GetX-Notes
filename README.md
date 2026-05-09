@@ -1927,3 +1927,19 @@ Delete controller → when not used
 ```
 
 You never need to call `dispose()` or manage the lifecycle manually.
+
+### 11. Replace and Delete
+
+**Manually remove a controller (rarely needed):**
+
+```dart
+Get.delete<Controller>();
+```
+
+**Swap implementation (advanced use):**
+
+```dart
+Get.replace<Controller>(NewController());
+```
+
+Both are available but most apps never need them since GetX manages memory automatically.
